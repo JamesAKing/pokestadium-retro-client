@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { loginURL } from '../../utilities/apiURLs';
 
 function LoginForm() {
     const [ username, setUsername ] = useState('');
@@ -9,19 +11,60 @@ function LoginForm() {
     const [ passwordError, setPasswordError ] = useState('');
 
     const [ passwordVisible, setPasswordVisible ] = useState(false);
+    const [ loading, setLoading ] = useState(false);
 
     const handleSubmit = async e => {
         e.preventDefault();
-        console.log('submitted');
-        if (!formValid()) return console.log('frm is not valid');
+        if (!formValid()) return console.log('form is not valid');
+
+        setLoading(true);
+
+        const loginData = {
+            username: username,
+            email: email,
+            password: password
+        };
+
+        try {
+            const resp = await axios.post(loginURL, loginData)
+            console.log(resp.data.accessToken);
+        } catch (err) {
+            console.log(err);
+        };
+        
+        console.log(loginData);
+        setLoading(false);
     };
 
-    const formValid = () => {
-        if (usernameError || emailError || passwordError) {
-            return false;
-        }
-        return true;
+    const resetForm = () => {
+        setUsername('');
+        setEmail('');
+        setPassword('');
+        resetErrors();
     };
+
+    const resetErrors = () => {
+        setUsernameError('');
+        setEmailError('');
+        setPasswordError('');
+    };
+
+const formValid = () => {
+    resetErrors();
+    // Improve Error Handling
+    if (usernameError || emailError || passwordError) {
+        return false;
+    }
+    if (username.length === 0 || email.length === 0) {
+        return false;
+    }
+    if (password.length < 6) {
+        setPasswordError('Password must be at least 6 char\'s long');
+        return false;
+    };
+    
+    return true;
+};
 
     return (
         <form onSubmit={handleSubmit}>
@@ -49,7 +92,7 @@ function LoginForm() {
                     <input type={passwordVisible ? "text" : "password"} name="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 </label>
                 <div>
-                    {passwordError && <p>error message</p>}
+                    {passwordError && <p>{passwordError}</p>}
                 </div>
             </div>
             <div>
@@ -58,8 +101,8 @@ function LoginForm() {
                 </label>
             </div>
             <div>
-                <button type="submit">Register</button>
-                <button type="button">Reset Form</button>
+                <button disabled={loading} type="submit">Register</button>
+                <button type="button" onClick={resetForm}>Reset Form</button>
             </div>
         </form>
     )
