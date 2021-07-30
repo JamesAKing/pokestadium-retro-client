@@ -24,10 +24,7 @@ function RegisterForm() {
     const [ passwordError, setPasswordError ] = useState('');
     const [ confirmPassword, setConfirmPassword ] = useState('');
     const [ confirmPasswordError, setConfirmPasswordError ] = useState('');
-
     const [ passwordVisible, setPasswordVisible ] = useState(false);
-
-
 
     const handleSubmit = async e => {
         e.preventDefault();
