@@ -32,11 +32,26 @@ function RegisterForm() {
     const handleSubmit = async e => {
         e.preventDefault();
         console.log('submitted');
-        if (!formValid()) return console.log('frm is not valid');
+        if (!formValid()) return console.log('form is not valid');
+    };
+
+    const resetForm = () => {
+        setUsername('');
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        setUsernameError('');
+        setFirstNameError('');
+        setLastNameError('');
+        setEmailError('');
+        setPasswordError('');
+        setConfirmPasswordError('');
     };
 
     const formValid = () => {
-        if (usernameError || firstNameError || lastNameError || emailError || passwordError || confirmPassword) {
+        if (usernameError || firstNameError || lastNameError || emailError || passwordError || confirmPasswordError) {
             return false;
         }
         return true;
@@ -109,7 +124,7 @@ function RegisterForm() {
             </fieldset>
             <div>
                 <button type="submit">Register</button>
-                <button type="button">Reset Form</button>
+                <button type="button" onClick={resetForm}>Reset Form</button>
             </div>
         </form>
     );

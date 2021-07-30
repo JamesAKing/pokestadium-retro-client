@@ -8,6 +8,8 @@ function LoginForm() {
     const [ password, setPassword ] = useState('');
     const [ passwordError, setPasswordError ] = useState('');
 
+    const [ passwordVisible, setPasswordVisible ] = useState(false);
+
     const handleSubmit = async e => {
         e.preventDefault();
         console.log('submitted');
@@ -44,11 +46,16 @@ function LoginForm() {
             <div>
                 <p>Password</p>
                 <label htmlFor="password">
-                    <input type="input" name="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                    <input type={passwordVisible ? "text" : "password"} name="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 </label>
                 <div>
                     {passwordError && <p>error message</p>}
                 </div>
+            </div>
+            <div>
+                <label htmlFor="togglePasswordVisibility">
+                    <input type="checkbox" name="togglePasswordVisibility" onClick={() => setPasswordVisible(!passwordVisible)}/>
+                </label>
             </div>
             <div>
                 <button type="submit">Register</button>
