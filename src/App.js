@@ -1,9 +1,10 @@
 import './App.scss';
+import Router from './router/Router';
 
 function App() {
   return (
     <div className="App">
-      Project Start
+      <Router />
     </div>
   );
 }
