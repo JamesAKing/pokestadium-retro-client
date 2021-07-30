@@ -55,6 +55,7 @@ function LoginForm() {
                 <button type="button">Reset Form</button>
             </div>
         </form>
+    )
 }
 
 export default LoginForm;

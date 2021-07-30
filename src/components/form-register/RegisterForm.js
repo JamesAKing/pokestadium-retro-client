@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 function RegisterForm() {
 
@@ -24,6 +24,8 @@ function RegisterForm() {
     const [ passwordError, setPasswordError ] = useState('');
     const [ confirmPassword, setConfirmPassword ] = useState('');
     const [ confirmPasswordError, setConfirmPasswordError ] = useState('');
+
+    const [ passwordVisible, setPasswordVisible ] = useState(false);
 
 
 
@@ -74,7 +76,7 @@ function RegisterForm() {
             <div>
                 <p>Email</p>
                 <label htmlFor="email">
-                    <input type="input" name="email" value={email} onChange={e => setEmail(e.target.value)}/>
+                    <input type="email" name="email" value={email} onChange={e => setEmail(e.target.value)}/>
                 </label>
                 <div>
                     {emailError && <p>error message</p>}
@@ -84,7 +86,7 @@ function RegisterForm() {
                 <div>
                     <p>Password</p>
                     <label htmlFor="password">
-                        <input type="input" name="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                        <input type={passwordVisible ? "text" : "password"} name="password" value={password} onChange={e => setPassword(e.target.value)}/>
                     </label>
                     <div>
                         {passwordError && <p>error message</p>}
@@ -93,11 +95,16 @@ function RegisterForm() {
                 <div>
                     <p>Confirm Password</p>
                     <label htmlFor="confirmPassword">
-                        <input type="input" name="confirmPassword" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
+                        <input type={passwordVisible ? "text" : "password"} name="confirmPassword" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
                     </label>
                     <div>
                         {confirmPasswordError && <p>error message</p>}
                     </div>
+                </div>
+                <div>
+                    <label htmlFor="togglePasswordVisibility">
+                        <input type="checkbox" name="togglePasswordVisibility" onClick={() => setPasswordVisible(!passwordVisible)}/>
+                    </label>
                 </div>
             </fieldset>
             <div>
