@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+import { loginURL } from '../../utilities/routerURLs';
 import { createUserURL } from '../../utilities/apiURLs';
 
 function RegisterForm() {
-
-    // DATA to be passed from frontend: 
-    // {
-    //     "username": "HotGuy94",
-    //     "firstName": "James",
-    //     "lastName": "King",
-    //     "email": "test@test.com",
-    //     "password": "password"
-    // }
 
     const [ username, setUsername ] = useState('');
     const [ usernameError, setUsernameError ] = useState('');
@@ -26,11 +19,12 @@ function RegisterForm() {
     const [ confirmPassword, setConfirmPassword ] = useState('');
     const [ confirmPasswordError, setConfirmPasswordError ] = useState('');
     const [ passwordVisible, setPasswordVisible ] = useState(false);
+    const [ loading, setLoading ] = useState(false);
 
     const handleSubmit = async e => {
         e.preventDefault();
-        console.log('submitted');
         if (!formValid()) return console.log('form is not valid');
+        setLoading(true);
 
         // Do I need to create an object here? 
         const createUserObj = {
@@ -44,11 +38,17 @@ function RegisterForm() {
         try {
             const resp = await axios.post(createUserURL, createUserObj);
             console.log(resp);
-            // Redirect to either Login Page or Home Page
+            resetForm();
+            // Redirect not working
+            <Redirect to={loginURL} />
         } catch (err) { 
             console.log(err);
             // Add Form Error Message? 
+            // Add logic for is username or email is taken - update error messages.
+            setLoading(false);
         };
+
+        setLoading(false);
     };
 
     const resetForm = () => {
@@ -58,6 +58,10 @@ function RegisterForm() {
         setEmail('');
         setPassword('');
         setConfirmPassword('');
+        resetErrors();
+    };
+
+    const resetErrors = () => {
         setUsernameError('');
         setFirstNameError('');
         setLastNameError('');
@@ -67,9 +71,23 @@ function RegisterForm() {
     };
 
     const formValid = () => {
+        resetErrors();
+        // Improve Error Handling
         if (usernameError || firstNameError || lastNameError || emailError || passwordError || confirmPasswordError) {
             return false;
         }
+        if (username.length === 0 || firstName.length === 0 || lastName.length === 0 || email.length === 0) {
+            return false;
+        }
+        if (password.length < 6) {
+            setPasswordError('Password must be at least 6 char\'s long');
+            return false;
+        };
+        if (password !== confirmPassword) {
+            setConfirmPasswordError('Password\'s do not match');
+            return false
+        };
+        
         return true;
     };
 
@@ -120,7 +138,7 @@ function RegisterForm() {
                         <input type={passwordVisible ? "text" : "password"} name="password" value={password} onChange={e => setPassword(e.target.value)}/>
                     </label>
                     <div>
-                        {passwordError && <p>error message</p>}
+                        {passwordError && <p>{passwordError}</p>}
                     </div>
                 </div>
                 <div>
@@ -129,7 +147,7 @@ function RegisterForm() {
                         <input type={passwordVisible ? "text" : "password"} name="confirmPassword" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
                     </label>
                     <div>
-                        {confirmPasswordError && <p>error message</p>}
+                        {confirmPasswordError && <p>{confirmPasswordError}</p>}
                     </div>
                 </div>
                 <div>
@@ -139,7 +157,7 @@ function RegisterForm() {
                 </div>
             </fieldset>
             <div>
-                <button type="submit">Register</button>
+                <button disabled={loading} type="submit">Register</button>
                 <button type="button" onClick={resetForm}>Reset Form</button>
             </div>
         </form>
