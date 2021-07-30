@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
+import { createUserURL } from '../../utilities/apiURLs';
 
 function RegisterForm() {
 
@@ -30,6 +31,24 @@ function RegisterForm() {
         e.preventDefault();
         console.log('submitted');
         if (!formValid()) return console.log('form is not valid');
+
+        // Do I need to create an object here? 
+        const createUserObj = {
+            username: username,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password
+        };
+
+        try {
+            const resp = await axios.post(createUserURL, createUserObj);
+            console.log(resp);
+            // Redirect to either Login Page or Home Page
+        } catch (err) { 
+            console.log(err);
+            // Add Form Error Message? 
+        };
     };
 
     const resetForm = () => {
