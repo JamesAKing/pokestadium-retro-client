@@ -3,6 +3,7 @@ import axios from 'axios';
 import { loginURL } from '../../utilities/apiURLs';
 
 function LoginForm() {
+    // Conside making this more succint with an object
     const [ username, setUsername ] = useState('');
     const [ usernameError, setUsernameError ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -27,12 +28,14 @@ function LoginForm() {
 
         try {
             const resp = await axios.post(loginURL, loginData)
-            console.log(resp.data.accessToken);
+            const token = resp.data.accessToken;
+            console.log(token);
+            if (token) window.sessionStorage.setItem("authToken", token);
         } catch (err) {
+            console.log('error loop');
             console.log(err);
         };
-        
-        console.log(loginData);
+
         setLoading(false);
     };
 
