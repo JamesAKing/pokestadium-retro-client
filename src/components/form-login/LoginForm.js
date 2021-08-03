@@ -29,7 +29,6 @@ function LoginForm() {
         try {
             const resp = await axios.post(loginURL, loginData)
             const token = resp.data.accessToken;
-            console.log(token);
             if (token) window.sessionStorage.setItem("authToken", token);
         } catch (err) {
             console.log('error loop');
