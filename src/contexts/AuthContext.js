@@ -3,11 +3,11 @@ import React, { useState, useEffect, useContext, createContext } from 'react';
 const AuthContext = createContext();
 
 export function useAuth() {
-    return useContext(authContext);
+    return useContext(AuthContext);
 };
 
 export function AuthProvider({ children }) {
-    const [ user, setUser ] = useState(null);
+    const [ user, setUser ] = useState();
     const [ loading, setLoading ] = useState(true);
 
     // Functions determing how client handles auth and state
@@ -32,6 +32,7 @@ export function AuthProvider({ children }) {
     }, []);
 
     const value = {
+        user, 
         registerUser,
         loginUser,
         logoutUser
@@ -41,6 +42,5 @@ export function AuthProvider({ children }) {
         <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
-    )
-
-}
+    );
+};
