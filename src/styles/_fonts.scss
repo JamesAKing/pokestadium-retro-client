@@ -6,3 +6,12 @@
     font-style: normal;
     font-display: swap;
 };
+
+@font-face {
+    font-family: 'Pokemon GB';
+    src: url('PokemonGB.woff2') format('woff2'),
+        url('PokemonGB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+};
