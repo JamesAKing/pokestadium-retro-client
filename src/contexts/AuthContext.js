@@ -7,11 +7,10 @@ export function useAuth() {
 };
 
 export function AuthProvider({ children }) {
-    const [ user, setUser ] = useState();
+    const [ user, setUser ] = useState(null);
     const [ loading, setLoading ] = useState(true);
 
     // Functions determing how client handles auth and state
-
     const registerUser = () => {};
 
     const loginUser = () => {};

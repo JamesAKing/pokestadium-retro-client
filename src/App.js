@@ -8,8 +8,10 @@ import { useAuth } from './contexts/AuthContext';
 import {
   homeURL,
   loginURL,
-  registerURL
+  registerURL,
+  dashboardURL
 } from './utilities/routerURLs';
+import DashboardPage from './pages/dashboard/Dashboard';
 
 function App() {
 
@@ -27,6 +29,7 @@ function App() {
             <Route exact path={homeURL} component={HomePage} />
             <Route path={loginURL} component={LoginPage} />
             <Route path={registerURL} component={RegisterPage} />
+            <Route path={dashboardURL} component={DashboardPage} />
           </Switch>
 
         </BrowserRouter>

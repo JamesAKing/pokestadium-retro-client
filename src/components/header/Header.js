@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import {
     homeURL,
     loginURL,
-    registerURL
+    registerURL,
+    dashboardURL
 } from '../../utilities/routerURLs';
 
 function Header() {
@@ -19,6 +20,10 @@ function Header() {
                     </li>
                     <li className="header__nav-item">
                         <NavLink to={registerURL} activeClassName="header__link--selected">Register</NavLink>
+                    </li>
+                    {/* Temp Link */}
+                    <li className="header__nav-item">
+                        <NavLink to={dashboardURL} activeClassName="header__link--selected">Dashboard</NavLink>
                     </li>
                 </ul>
             </nav>
