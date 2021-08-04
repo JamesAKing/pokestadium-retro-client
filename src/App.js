@@ -1,5 +1,6 @@
 import './App.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import PrivateRoute from './components/private-routes/PrivateRoutes';
 import Header from './components/header/Header';
 import LoginPage from './pages/login/Login';
 import HomePage from './pages/home/Home';
@@ -29,7 +30,7 @@ function App() {
             <Route exact path={homeURL} component={HomePage} />
             <Route path={loginURL} component={LoginPage} />
             <Route path={registerURL} component={RegisterPage} />
-            <Route path={dashboardURL} component={DashboardPage} />
+            <PrivateRoute exact path={dashboardURL} component={DashboardPage} />
           </Switch>
 
         </BrowserRouter>
