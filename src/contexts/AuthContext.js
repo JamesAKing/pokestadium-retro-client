@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
 import jwt_decode from 'jwt-decode';
+import axios from 'axios';
 
 const AuthContext = createContext();
 
@@ -12,7 +13,7 @@ export function AuthProvider({ children }) {
     // const [ loading, setLoading ] = useState(true);
 
     // Functions determing how client handles auth and state
-    const registerUser = () => {};
+    // const registerUser = () => {};
 
     const loginUser = (token) => {
         const decodedToken = jwt_decode(token);
@@ -39,7 +40,6 @@ export function AuthProvider({ children }) {
 
     const value = {
         user, 
-        registerUser,
         loginUser,
         logoutUser
     };

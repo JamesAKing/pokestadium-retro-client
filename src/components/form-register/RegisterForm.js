@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useAuth } from '../../contexts/AuthContext';
 import LoggedInRedirect from '../logged-in-redirect/LoggedInRedirect';
 import { loginURL } from '../../utilities/routerURLs';
 import { createUserURL } from '../../utilities/apiURLs';
 
 function RegisterForm() {
-
-    const { user } = useAuth();
 
     const [ username, setUsername ] = useState('');
     const [ usernameError, setUsernameError ] = useState('');
@@ -23,6 +20,7 @@ function RegisterForm() {
     const [ confirmPasswordError, setConfirmPasswordError ] = useState('');
     const [ passwordVisible, setPasswordVisible ] = useState(false);
     const [ loading, setLoading ] = useState(false);
+    const [ registered, setRegistered ] = useState(false);
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -40,7 +38,8 @@ function RegisterForm() {
         try {
             const resp = await axios.post(createUserURL, createUserObj);
             console.log(resp);
-            resetForm();
+            // resetForm();
+            setRegistered(true);
         } catch (err) { 
             console.log(err);
             // Add Form Error Message? 
@@ -91,7 +90,7 @@ function RegisterForm() {
         return true;
     };
 
-    if (user) return <LoggedInRedirect redirectTo={loginURL} />
+    if (registered && !loading) return <LoggedInRedirect redirectTo={loginURL} />
 
     return (
         <form onSubmit={handleSubmit}>
