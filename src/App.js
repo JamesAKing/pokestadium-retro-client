@@ -1,11 +1,10 @@
 import './App.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import PrivateRoute from './components/private-routes/PrivateRoutes';
+// import PrivateRoute from './components/private-routes/PrivateRoutes';
 import Header from './components/header/Header';
 import LoginPage from './pages/login/Login';
 import HomePage from './pages/home/Home';
 import RegisterPage from './pages/register/Register';
-import { useAuth } from './contexts/AuthContext';
 import {
   homeURL,
   loginURL,
@@ -15,10 +14,6 @@ import {
 import DashboardPage from './pages/dashboard/Dashboard';
 
 function App() {
-
-  const auth = useAuth();
-
-  console.log(auth);
 
   return (
     <div className="App">

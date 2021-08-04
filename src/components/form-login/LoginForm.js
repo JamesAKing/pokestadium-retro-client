@@ -3,7 +3,7 @@ import axios from 'axios';
 import { loginURL } from '../../utilities/apiURLs';
 
 function LoginForm() {
-    // Conside making this more succint with an object
+    // Conside making this more succint with an object and {...}
     const [ username, setUsername ] = useState('');
     const [ usernameError, setUsernameError ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -27,9 +27,11 @@ function LoginForm() {
         };
 
         try {
+            // Replace with logic stored in AuthProvider
             const resp = await axios.post(loginURL, loginData)
             const token = resp.data.accessToken;
             if (token) window.sessionStorage.setItem("authToken", token);
+            // Redirect to Dashboard
         } catch (err) {
             console.log('error loop');
             console.log(err);

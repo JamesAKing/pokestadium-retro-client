@@ -11,12 +11,9 @@ function Dashboard() {
     //Decide if this is a good way to handle API errors? 
     const [ apiError, setApiError ] = useState('');
 
-    const userId = 'james';
-
-
     useEffect(() => {
-        getUserRecord(userId);
-    }, []);
+        getUserRecord(user.userId);
+    }, [user.userId]);
 
     const getUserRecord = async userId => {
         try {
@@ -33,7 +30,7 @@ function Dashboard() {
     return (
         <div>
             Dashboard
-            <p>{user}</p>
+            <p>{userData}</p>
         </div>
     );
 }

@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
+import jwt_decode from 'jwt-decode';
+
+console.log('hello');
 
 const AuthContext = createContext();
 
@@ -8,7 +11,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const [ user, setUser ] = useState();
-    const [ loading, setLoading ] = useState(true);
+    // const [ loading, setLoading ] = useState(true);
 
     // Functions determing how client handles auth and state
     const registerUser = () => {};
@@ -21,7 +24,7 @@ export function AuthProvider({ children }) {
         const unsubscribe = user => {
             if (user) {
                 setUser(user)
-                setLoading(false);
+                // setLoading(false);
             } else {
                 setUser(null)
             };
