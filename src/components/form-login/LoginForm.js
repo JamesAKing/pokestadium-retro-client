@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { loginURL } from '../../utilities/apiURLs';
 import { useAuth } from '../../contexts/AuthContext';
+import LoggedInRedirect from '../logged-in-redirect/LoggedInRedirect';
 
 function LoginForm() {
     // Conside making this more succint with an object and {...}
@@ -15,7 +16,7 @@ function LoginForm() {
     const [ passwordVisible, setPasswordVisible ] = useState(false);
     const [ loading, setLoading ] = useState(false);
 
-    const { loginUser } = useAuth();
+    const { user, loginUser } = useAuth();
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -69,6 +70,8 @@ const formValid = () => {
     
     return true;
 };
+
+    if (user && !loading) return <LoggedInRedirect />
 
     return (
         <form onSubmit={handleSubmit}>

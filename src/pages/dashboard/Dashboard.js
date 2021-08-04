@@ -31,8 +31,6 @@ function Dashboard() {
         }
     };
 
-    console.log(userData.player.firstName);
-
     if (apiError) return <p>Error retrieving data from server. See console for details</p>;
 
     return (
