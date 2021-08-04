@@ -1,10 +1,10 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { dashboardURL } from '../../utilities/routerURLs';
 
-function LoggedInRedirect() {
+function LoggedInRedirect({ redirectTo }) {
 
-    return <Redirect to={dashboardURL} />
-}
+    return <Redirect to={redirectTo} />
+
+};
 
 export default LoggedInRedirect;

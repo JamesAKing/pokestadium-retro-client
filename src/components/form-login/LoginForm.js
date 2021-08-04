@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { loginURL } from '../../utilities/apiURLs';
 import { useAuth } from '../../contexts/AuthContext';
 import LoggedInRedirect from '../logged-in-redirect/LoggedInRedirect';
+import { dashboardURL } from '../../utilities/routerURLs';
 
 function LoginForm() {
     // Conside making this more succint with an object and {...}
@@ -71,7 +72,7 @@ const formValid = () => {
     return true;
 };
 
-    if (user && !loading) return <LoggedInRedirect />
+    if (user && !loading) return <LoggedInRedirect redirectTo={dashboardURL} />
 
     return (
         <form onSubmit={handleSubmit}>

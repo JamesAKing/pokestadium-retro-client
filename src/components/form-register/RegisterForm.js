@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import LoggedInRedirect from '../logged-in-redirect/LoggedInRedirect';
 import { loginURL } from '../../utilities/routerURLs';
 import { createUserURL } from '../../utilities/apiURLs';
 
 function RegisterForm() {
+
+    const { user } = useAuth();
 
     const [ username, setUsername ] = useState('');
     const [ usernameError, setUsernameError ] = useState('');
@@ -25,7 +28,6 @@ function RegisterForm() {
         e.preventDefault();
         if (!formValid()) return console.log('form is not valid');
         setLoading(true);
-
         // Do I need to create an object here? 
         const createUserObj = {
             username: username,
@@ -39,8 +41,6 @@ function RegisterForm() {
             const resp = await axios.post(createUserURL, createUserObj);
             console.log(resp);
             resetForm();
-            // Redirect not working
-            <Redirect to={loginURL} />
         } catch (err) { 
             console.log(err);
             // Add Form Error Message? 
@@ -90,6 +90,8 @@ function RegisterForm() {
         
         return true;
     };
+
+    if (user) return <LoggedInRedirect redirectTo={loginURL} />
 
     return (
         <form onSubmit={handleSubmit}>
