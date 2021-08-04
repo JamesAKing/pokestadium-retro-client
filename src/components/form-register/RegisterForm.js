@@ -38,15 +38,12 @@ function RegisterForm() {
         try {
             const resp = await axios.post(createUserURL, createUserObj);
             console.log(resp);
-            // resetForm();
             setRegistered(true);
         } catch (err) { 
             console.log(err);
-            // Add Form Error Message? 
             // Add logic for is username or email is taken - update error messages.
             setLoading(false);
         };
-
         setLoading(false);
     };
 
