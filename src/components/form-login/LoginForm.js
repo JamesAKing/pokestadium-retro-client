@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { loginURL } from '../../utilities/apiURLs';
+import { useAuth } from '../../contexts/AuthContext';
 
 function LoginForm() {
     // Conside making this more succint with an object and {...}
@@ -14,26 +15,25 @@ function LoginForm() {
     const [ passwordVisible, setPasswordVisible ] = useState(false);
     const [ loading, setLoading ] = useState(false);
 
+    const { loginUser } = useAuth();
+
     const handleSubmit = async e => {
         e.preventDefault();
         if (!formValid()) return console.log('form is not valid');
 
         setLoading(true);
-
         const loginData = {
             username: username,
             email: email,
             password: password
         };
-
         try {
-            // Replace with logic stored in AuthProvider
             const resp = await axios.post(loginURL, loginData)
             const token = resp.data.accessToken;
-            if (token) window.sessionStorage.setItem("authToken", token);
+            // Remove conditional as in try block?
+            if (token) loginUser(token);
             // Redirect to Dashboard
         } catch (err) {
-            console.log('error loop');
             console.log(err);
         };
 

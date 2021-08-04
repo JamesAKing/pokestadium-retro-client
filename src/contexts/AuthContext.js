@@ -1,18 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
 import jwt_decode from 'jwt-decode';
 
-
-// TEST: Add to loginUser Function
-
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-const decoded = jwt_decode(token);
-
-decoded && console.log(decoded);
-
-// End of Test
-
-
-
 const AuthContext = createContext();
 
 export function useAuth() {
@@ -26,7 +14,13 @@ export function AuthProvider({ children }) {
     // Functions determing how client handles auth and state
     const registerUser = () => {};
 
-    const loginUser = () => {};
+    const loginUser = (token) => {
+        const decodedToken = jwt_decode(token);
+        if (decodedToken.playerId) setUser({
+            token: token,
+            player: decodedToken
+        });
+    };
 
     const logoutUser = () => {};
 

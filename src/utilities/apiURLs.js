@@ -7,4 +7,4 @@ export const accessTokenURL = `${loginURL}/token`;
 
 export const logoutURL = `${BASE_API_URL}/logout`;
 
-export const userRecordURL = `${BASE_API_URL}/user-record`;
+export const userRecordURL = `${BASE_API_URL}/user-record/`;

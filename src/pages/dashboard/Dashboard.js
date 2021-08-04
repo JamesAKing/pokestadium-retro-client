@@ -7,30 +7,41 @@ function Dashboard() {
 
     const { user } = useAuth();
 
-    const [ userData, setUserData ] = useState([]);
+    const [ userData, setUserData ] = useState();
     //Decide if this is a good way to handle API errors? 
     const [ apiError, setApiError ] = useState('');
 
     useEffect(() => {
-        getUserRecord(user.userId);
-    }, [user.userId]);
+        getUserRecord(user);
+    }, [user]);
 
-    const getUserRecord = async userId => {
+    const getUserRecord = async user => {
+        const { token } = user;
+
         try {
-            const resp = axios.get(userRecordURL, { userId });
+            const resp = await axios.get(userRecordURL, {
+                headers : {
+                    'authorization' : `Bearer ${token}`
+                }
+            });
             setUserData(resp.data);
         } catch (err) {
             console.log(err);
             setApiError(err);
-        };
+        }
     };
+
+    console.log(userData.player.firstName);
 
     if (apiError) return <p>Error retrieving data from server. See console for details</p>;
 
     return (
         <div>
             Dashboard
-            <p>{userData}</p>
+            {userData ? 
+                <p>{`Welcome ${userData.player.firstName}`}</p>:
+                <p>Getting User Data</p>
+            }
         </div>
     );
 }
