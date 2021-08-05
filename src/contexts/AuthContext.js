@@ -33,8 +33,6 @@ export function AuthProvider({ children }) {
         } catch (err) {
             console.log(err);
         };
-        // delete jwt token + refresh token
-        // setUser(null);
     };
 
     useEffect(() => {

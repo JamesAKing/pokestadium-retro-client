@@ -6,7 +6,7 @@ import LoggedInRedirect from '../logged-in-redirect/LoggedInRedirect';
 import { dashboardURL } from '../../utilities/routerURLs';
 
 function LoginForm() {
-    // Conside making this more succint with an object and {...}
+    // Consider making this more succint with an object and {...}
     const [ username, setUsername ] = useState('');
     const [ usernameError, setUsernameError ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -29,12 +29,12 @@ function LoginForm() {
             email: email,
             password: password
         };
+
         try {
             const resp = await axios.post(loginURL, loginData)
             const token = resp.data.accessToken;
             // Remove conditional as in try block?
             if (token) loginUser(token);
-            // Redirect to Dashboard
         } catch (err) {
             console.log(err);
         };
@@ -58,12 +58,8 @@ function LoginForm() {
 const formValid = () => {
     resetErrors();
     // Improve Error Handling
-    if (usernameError || emailError || passwordError) {
-        return false;
-    }
-    if (username.length === 0 || email.length === 0) {
-        return false;
-    }
+    if (usernameError || emailError || passwordError) return false;
+    if (username.length === 0 || email.length === 0) return false;
     if (password.length < 6) {
         setPasswordError('Password must be at least 6 char\'s long');
         return false;

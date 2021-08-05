@@ -26,7 +26,6 @@ function RegisterForm() {
         e.preventDefault();
         if (!formValid()) return console.log('form is not valid');
         setLoading(true);
-        // Do I need to create an object here? 
         const createUserObj = {
             username: username,
             firstName: firstName,
