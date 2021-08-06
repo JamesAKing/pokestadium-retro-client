@@ -1,0 +1,97 @@
+$pokeball-size: 250px;
+$pokeball-inner-size: 80px;
+$pokeball-border-size: 10px;
+
+$pokeball-before-diameter: $pokeball-inner-size;
+$pokeball-after-diameter: 70px;
+
+$pokeball-red: #BA0C2F;
+$pokeball-grey: #262122;
+$pokeball-white: #fff;
+
+
+
+.pokeball {
+    position: relative;
+    border: $pokeball-border-size solid #262122;
+    width: $pokeball-size;
+    height: $pokeball-size;
+    border-radius: 50%;
+
+    background: linear-gradient(
+        180deg,
+        $pokeball-red 0%,
+        $pokeball-red 48%,
+        $pokeball-grey 48%,
+        $pokeball-grey 54%,
+        $pokeball-white 54%,
+        $pokeball-white 100%,
+    );
+
+    &::before, &:after {
+        content: "";
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+    }
+
+    &::before {
+        background-color: $pokeball-grey;
+        width: $pokeball-before-diameter;
+        height: $pokeball-before-diameter;
+        top: calc(50% - #{$pokeball-before-diameter} / 2);
+        left: calc(50% - #{$pokeball-before-diameter} / 2);
+    }
+
+    &::after {
+        width: $pokeball-after-diameter;
+        height: $pokeball-after-diameter;
+
+        top: calc(50% - (#{$pokeball-after-diameter / 2}));
+        left: calc(50% - (#{$pokeball-after-diameter / 2}));
+
+        background: $pokeball-white;
+        border: double $pokeball-border-size $pokeball-grey;
+    };
+
+    &--animated {
+        animation: pokeballWobble;
+        animation-duration: 1.3s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+    }
+}
+
+@keyframes pokeballWobble {
+    from {
+        transform: none;
+    }
+
+    20% {
+        transform: 
+            translate3d(-20%, 0, 0)
+            rotate3d(0, 0, 1, -10deg);
+    }
+
+    40% {
+        transform: 
+            translate3d(20%, 0, 0)
+            rotate3d(0, 0, 1, 5deg);
+    }
+
+    50% {
+        transform: 
+            translate3d(-10%, 0, 0)
+            rotate3d(0, 0, 1, -10deg);
+    }
+
+    60% {
+        transform: 
+            translate3d(10%, 0, 0)
+            rotate3d(0, 0, 1, 5deg);
+    }
+
+    to {
+        transform: none;
+    }
+}
