@@ -2,8 +2,7 @@ import './PokeballLoading.scss';
 
 function PokeballLoading() {
     return (
-        <div className="pokeball pokeball--animated">
-        </div>
+        <div className="pokeball pokeball--animated"></div>
     );
 }
 
