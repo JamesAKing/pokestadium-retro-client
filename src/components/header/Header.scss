@@ -1,10 +1,45 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
 .header {
+    position: relative;
     width: 100%;
     height: 80px;
     display: flex;
     align-items: center;
 
-    background-color: red;
+    background: linear-gradient(
+        180deg,
+        $pokeball-top 0%,
+        $pokeball-top 80%,
+        $pokeball-trim 80%,
+        $pokeball-trim 100%
+    );
+
+    &::before, &::after {
+        content: "";
+        border-radius: 50%;
+        position: absolute;
+    }
+
+    &::before {
+        background: $pokeball-base;
+        width: 75px;
+        height: 75px;
+        top: 43%;
+        left: calc((100% - 75px) / 2);
+    }
+
+    &::after {
+        top: 43%;
+        left: calc((100% - 75px) / 2);
+        width: 75px;
+        height: 75px;
+        border: double 10px $pokeball-trim;
+    }
+
+
+
 
     &__nav-items{
         display: flex;

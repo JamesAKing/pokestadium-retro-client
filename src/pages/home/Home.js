@@ -6,7 +6,7 @@ function HomePage() {
     return (
         <main className="home">
             HOME PAGE
-            <PokeballLoading />
+            {/* <PokeballLoading /> */}
         </main>
     );
 }

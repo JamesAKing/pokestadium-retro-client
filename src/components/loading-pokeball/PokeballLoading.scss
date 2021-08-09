@@ -1,9 +1,8 @@
 @use "../../styles/variables" as *;
 @use "../../styles/animations" as *;
 
-
 $pokeball-size: 200px;
-
+// Do not adjust below variables
 $pokeball-inner-size: calc(#{$pokeball-size} / 3);
 $pokeball-border-size: calc(#{$pokeball-size} / 25);
 $pokeball-before-diameter: $pokeball-inner-size;
@@ -31,7 +30,6 @@ $pokeball-after-diameter: calc(#{$pokeball-size} / 3.5);
     &::before, &:after {
         content: "";
         border-radius: 50%;
-        display: block;
         position: absolute;
     };
 
@@ -44,12 +42,10 @@ $pokeball-after-diameter: calc(#{$pokeball-size} / 3.5);
     };
 
     &::after {
-        width: $pokeball-after-diameter;
-        height: $pokeball-after-diameter;
-
         top: calc(50% - (#{$pokeball-after-diameter / 2}));
         left: calc(50% - (#{$pokeball-after-diameter / 2}));
-
+        width: $pokeball-after-diameter;
+        height: $pokeball-after-diameter;
         background: $pokeball-base;
         border: double $pokeball-border-size $pokeball-trim;
     };
