@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
 import { userRecordURL } from '../../utilities/apiURLs';
-
+import PokeballLoading from '../../components/loading-pokeball/PokeballLoading';
 function Dashboard() {
 
     const { user } = useAuth();
 
     const [ userData, setUserData ] = useState();
-    //Decide if this is a good way to handle API errors? 
     const [ apiError, setApiError ] = useState('');
 
     useEffect(() => {
@@ -25,6 +24,7 @@ function Dashboard() {
                 }
             });
             setUserData(resp.data);
+            
         } catch (err) {
             console.log(err);
             setApiError(err);
@@ -38,7 +38,7 @@ function Dashboard() {
             Dashboard
             {userData ? 
                 <p>{`Welcome ${userData.player.firstName}`}</p>:
-                <p>Getting User Data</p>
+                <PokeballLoading />
             }
         </div>
     );
