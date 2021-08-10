@@ -7,12 +7,15 @@ import {
     registerURL,
     dashboardURL
 } from '../../utilities/routerURLs';
+import Hamburger from '../hamburger/Hamburger';
 
 function Header() {
 
     const { user, logoutUser } = useAuth();
 
     return (
+        <>
+        <div className="header__spacer"></div>
         <header className="header">
             <nav className="header__nav">
                 <ul className="header__nav-items">
@@ -31,7 +34,9 @@ function Header() {
                     {user && <li className="header__nav-item"><button type="button" onClick={logoutUser}>Log Out</button></li>}
                 </ul>
             </nav>
+            <Hamburger />
         </header>
+        </>
     );
 }
 

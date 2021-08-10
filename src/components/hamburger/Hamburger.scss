@@ -1,0 +1,63 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+$dot-diameter: 0.75rem;
+
+.hamburger {
+    @include tablet {
+        display: none;
+    }
+
+    &__icon {
+        width: 60px;
+        display: flex;
+        justify-content: space-between;
+
+        &:hover .hamburger__icon-dot, &:active .hamburger__icon-dot {
+            box-shadow: 0 0 5px yellow;
+
+            &:first-child {
+                box-shadow: 0 0 5px lightcoral;
+            }
+
+            &:last-child {
+                box-shadow: 0 0 5px lightcyan;
+            }
+        }
+    }
+
+    &__icon-dot {
+        width: $dot-diameter;
+        height: $dot-diameter;
+        border: solid 2px $pokeball-trim;
+        border-radius: 50%;
+        background-color: yellow;
+
+        &:first-child {
+            background-color: red;
+        }
+
+        &:last-child {
+            background-color: blue;
+        }
+    }
+    
+    &__menu {
+        position: fixed;
+        top: $header-height;
+        left: 0;
+        right: 0;
+        height: calc(100vh - #{$header-height});
+        background-color: $pokeball-base;
+        border-bottom: 10px solid $pokeball-trim;
+        transition: transform .5s ease-in-out;
+
+        &--inactive {
+            transform: translateY(-100vh);
+        }
+
+        &--active {
+            transform: translateY(0);
+        }
+    }
+}

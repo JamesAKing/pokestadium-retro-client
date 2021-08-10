@@ -18,3 +18,26 @@
         @content;
     }
 }
+
+
+// Spacing and Layout
+@mixin page-height-default {
+ min-height: calc(100vh - #{$header-spacer-height} - 2rem);   
+}
+
+@mixin default-page-padding {
+    @include mobile {
+        padding-left: $padding-default-mobile;
+        padding-right: $padding-default-mobile;
+    }
+
+    @include tablet {
+        padding-left: $padding-default-tablet;
+        padding-right: $padding-default-tablet;
+    }
+
+    @include desktop {
+        padding-left: $padding-default-desktop;
+        padding-right: $padding-default-desktop;
+    }
+}

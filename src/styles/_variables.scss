@@ -3,8 +3,17 @@ $screen-mobile: 320px;
 $screen-tablet: 768px;
 $screen-desktop: 1280px;
 
-// COLOURS
+// Colours
 $pokeball-top: #f00000;
 $pokeball-top-highlight: #ee1515;
 $pokeball-trim: #222224;
 $pokeball-base: #f0f0f0;
+
+// Default Content Spacing
+$padding-default-mobile: 1rem;
+$padding-default-tablet: 1.5rem;
+$padding-default-desktop: 6.25rem;
+
+// Header Height
+$header-height: 80px;
+$header-spacer-height: calc(#{$header-height} + 30px);
