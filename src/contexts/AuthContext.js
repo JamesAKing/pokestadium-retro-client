@@ -17,14 +17,6 @@ export function AuthProvider({ children }) {
     // Functions determing how client handles auth and state
     // const registerUser = () => {};
 
-    // const loginUser = (token) => {
-    //     const decodedToken = jwt_decode(token);
-    //     if (decodedToken.playerId) setUser({
-    //         token: token,
-    //         player: decodedToken
-    //     });
-    // };
-
     const loginUser = async (loginURL, loginData) => {
         try {
             const resp = await axios.post(loginURL, loginData)
