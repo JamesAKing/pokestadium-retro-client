@@ -3,10 +3,10 @@ import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
 import { userRecordURL } from '../../utilities/apiURLs';
 import PokeballLoading from '../../components/loading-pokeball/PokeballLoading';
+import UserRecord from '../../components/user-record/UserRecord';
 function Dashboard() {
 
     const { user } = useAuth();
-
     const [ userData, setUserData ] = useState();
     const [ apiError, setApiError ] = useState('');
 
@@ -37,7 +37,7 @@ function Dashboard() {
         <div>
             Dashboard
             {userData ? 
-                <p>{`Welcome ${userData.player.firstName}`}</p>:
+                <UserRecord userData={userData} />:
                 <PokeballLoading />
             }
         </div>

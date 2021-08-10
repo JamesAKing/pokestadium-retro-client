@@ -9,8 +9,6 @@ function PrivateRoutes({ component: Component, ...rest }) {
 
     // Is this readable?
 
-    if (user) console.log('there is a user');
-
     return (
         <Route {...rest} render={props => {
             return user ?
