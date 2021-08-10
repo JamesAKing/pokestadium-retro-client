@@ -16,7 +16,9 @@ function Header() {
     return (
         <>
         <div className="header__spacer"></div>
+        <Hamburger />       
         <header className="header">
+            <div className="header__pokeball"></div>
             <nav className="header__nav">
                 <ul className="header__nav-items">
                     <li className="header__nav-item">
@@ -34,7 +36,6 @@ function Header() {
                     {user && <li className="header__nav-item"><button type="button" onClick={logoutUser}>Log Out</button></li>}
                 </ul>
             </nav>
-            <Hamburger />
         </header>
         </>
     );

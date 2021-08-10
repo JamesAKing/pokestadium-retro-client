@@ -16,33 +16,24 @@
         $pokeball-trim 80%,
         $pokeball-trim 100%
     );
-
-    &::before, &::after {
-        content: "";
-        border-radius: 50%;
-        position: absolute;
-    }
-
-    &::before {
-        background: $pokeball-base;
-        width: 75px;
-        height: 75px;
-        top: 43%;
-        left: calc((100% - 75px) / 2);
-    }
-
-    &::after {
-        top: 43%;
-        left: calc((100% - 75px) / 2);
-        width: 75px;
-        height: 75px;
-        border: double 10px $pokeball-trim;
-    }
+    // z-index: 1;
 
     &__spacer {
         width: 100%;
         height: $header-spacer-height;
         margin-bottom: 2rem;
+    }
+    
+    &__pokeball {
+        position: relative;
+        top: 43%;
+        left: calc((100% - 75px) / 2);
+        min-width: 75px;
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background: $pokeball-base;
+        border: double 10px $pokeball-trim;
     }
 
     &__nav {

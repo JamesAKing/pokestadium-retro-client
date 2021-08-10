@@ -4,6 +4,8 @@ import { useAuth } from '../../contexts/AuthContext';
 import { userRecordURL } from '../../utilities/apiURLs';
 import PokeballLoading from '../../components/loading-pokeball/PokeballLoading';
 import UserRecord from '../../components/user-record/UserRecord';
+import Pokedex from '../../components/pokedex/Pokedex';
+import BattleArena from '../../components/battle-arena/BattleArena';
 function Dashboard() {
 
     const { user } = useAuth();
@@ -36,9 +38,16 @@ function Dashboard() {
     return (
         <div>
             Dashboard
-            {userData ? 
-                <UserRecord userData={userData} />:
-                <PokeballLoading />
+
+            {!userData ?
+                <PokeballLoading /> :
+                <div>
+                    <UserRecord userData={userData} />
+                    {/* Pokemon Parties */}
+                    <Pokedex />
+                    <BattleArena />
+                </div>
+
             }
         </div>
     );
