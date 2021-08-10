@@ -9,14 +9,8 @@
     height: $header-height;
     display: flex;
     align-items: center;
-    background: linear-gradient(
-        180deg,
-        $pokeball-top 0%,
-        $pokeball-top 80%,
-        $pokeball-trim 80%,
-        $pokeball-trim 100%
-    );
-    // z-index: 1;
+    background: $pokeball-top;
+    border-bottom: solid 10px $pokeball-trim;
 
     &__spacer {
         width: 100%;
@@ -26,7 +20,7 @@
     
     &__pokeball {
         position: relative;
-        top: 43%;
+        top: 60%;
         left: calc((100% - 75px) / 2);
         min-width: 75px;
         width: 75px;
