@@ -12,7 +12,7 @@ import {
 function Hamburger() {
 
     const { user, logoutUser } = useAuth(); 
-    const [ menuVisible, setMenuVisible ] = useState(true);
+    const [ menuVisible, setMenuVisible ] = useState(false);
 
     console.log(menuVisible)
 

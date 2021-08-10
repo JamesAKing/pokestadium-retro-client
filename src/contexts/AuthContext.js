@@ -13,22 +13,38 @@ export function useAuth() {
 export function AuthProvider({ children }) {
     const [ user, setUser ] = useState();
     console.log(user);
-    // const [ loading, setLoading ] = useState(true);
 
     // Functions determing how client handles auth and state
     // const registerUser = () => {};
 
-    const loginUser = (token) => {
-        const decodedToken = jwt_decode(token);
-        if (decodedToken.playerId) setUser({
-            token: token,
-            player: decodedToken
-        });
+    // const loginUser = (token) => {
+    //     const decodedToken = jwt_decode(token);
+    //     if (decodedToken.playerId) setUser({
+    //         token: token,
+    //         player: decodedToken
+    //     });
+    // };
+
+    const loginUser = async (loginURL, loginData) => {
+        try {
+            const resp = await axios.post(loginURL, loginData)
+            const token = resp.data.accessToken;
+
+            const decodedToken = jwt_decode(token);
+            if (decodedToken.playerId) {
+                setUser({
+                    token: token,
+                    player: decodedToken
+                });
+            }
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     const logoutUser = async () => {
         try {
-            const resp = await axios.delete(logoutURL, { data : {token : user.token} });
+            await axios.delete(logoutURL, { data : {token : user.token} });
             setUser(null);
         } catch (err) {
             console.log(err);
@@ -39,7 +55,6 @@ export function AuthProvider({ children }) {
         const unsubscribe = user => {
             if (user) {
                 setUser(user)
-                // setLoading(false);
             } else {
                 setUser(null)
             };

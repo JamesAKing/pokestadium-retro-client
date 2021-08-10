@@ -22,23 +22,15 @@ function LoginForm() {
     const handleSubmit = async e => {
         e.preventDefault();
         if (!formValid()) return console.log('form is not valid');
-
         setLoading(true);
+
         const loginData = {
             username: username,
             email: email,
             password: password
         };
 
-        try {
-            const resp = await axios.post(loginURL, loginData)
-            const token = resp.data.accessToken;
-            // Remove conditional as in try block?
-            if (token) loginUser(token);
-        } catch (err) {
-            console.log(err);
-        };
-
+        loginUser(loginURL, loginData)
         setLoading(false);
     };
 
@@ -105,7 +97,7 @@ const formValid = () => {
                 </label>
             </div>
             <div>
-                <button disabled={loading} type="submit">Register</button>
+                <button disabled={loading} type="submit">Login</button>
                 <button type="button" onClick={resetForm}>Reset Form</button>
             </div>
         </form>
