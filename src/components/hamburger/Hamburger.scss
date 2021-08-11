@@ -10,7 +10,7 @@ $dot-diameter: 0.75rem;
     }
     
     &__icon {
-        position: absolute;
+        position: fixed;
         top: 2.5rem;
         right: 1rem;
         z-index: 1;
