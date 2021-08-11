@@ -1,0 +1,12 @@
+@use "../../styles/variables" as *;
+
+.card {
+    width: 100%;
+    min-height: 200px;
+    padding: 1.5rem 1rem;
+    margin: 1rem;
+    background: white;
+    border: solid 2px $pokeball-base;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .7);
+}

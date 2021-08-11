@@ -1,5 +1,6 @@
 @use "./styles/mixins" as *;
 @use "./styles/variables" as *;
+@use "./styles/globals.scss" as *;
 
 
 *, *::before, *::after {

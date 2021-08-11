@@ -1,0 +1,6 @@
+@use "./variables" as *;
+
+.link-default {
+    color: $pokeball-trim;
+    text-decoration: none;
+};
