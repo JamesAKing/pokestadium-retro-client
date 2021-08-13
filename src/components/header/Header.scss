@@ -2,7 +2,7 @@
 @use "../../styles/variables" as *;
 
 .header {
-    @include default-page-padding;
+    @include page-padding-default;
     position: fixed;
     top: 0;
     width: 100%;

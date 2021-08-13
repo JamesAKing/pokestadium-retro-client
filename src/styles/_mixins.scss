@@ -25,7 +25,9 @@
  min-height: calc(100vh - #{$header-spacer-height} - 2rem);   
 }
 
-@mixin default-page-padding {
+@mixin page-padding-default {
+    width: 100%;
+
     @include mobile {
         padding-left: $padding-default-mobile;
         padding-right: $padding-default-mobile;
@@ -37,7 +39,15 @@
     }
 
     @include desktop {
-        padding-left: $padding-default-desktop;
-        padding-right: $padding-default-desktop;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@mixin page-content-default {
+    width: 100%;
+
+    @include desktop {
+        max-width: 900px;
     }
 }

@@ -20,13 +20,12 @@ function App() {
         <BrowserRouter>
 
           <Header />
-
+          
           <Switch>
             <Route exact path={homeURL} component={HomePage} />
             <Route path={loginURL} component={LoginPage} />
             <Route path={registerURL} component={RegisterPage} />
             <PrivateRoute exact path={dashboardURL} component={DashboardPage} />
-            {/* <Route exact path={dashboardURL} component={DashboardPage} /> */}
           </Switch>
 
         </BrowserRouter>

@@ -6,6 +6,7 @@ import PokeballLoading from '../../components/loading-pokeball/PokeballLoading';
 import UserRecord from '../../components/user-record/UserRecord';
 import Pokedex from '../../components/pokedex/Pokedex';
 import BattleArena from '../../components/battle-arena/BattleArena';
+import PageWrapper from '../../components/page-wrapper/PageWrapper';
 function Dashboard() {
 
     const { user } = useAuth();
@@ -36,20 +37,20 @@ function Dashboard() {
     if (apiError) return <p>Error retrieving data from server. See console for details</p>;
 
     return (
-        <div>
-            Dashboard
-
-            {!userData ?
-                <PokeballLoading /> :
-                <div>
-                    <UserRecord userData={userData} />
-                    {/* Pokemon Parties */}
-                    <Pokedex />
-                    <BattleArena />
-                </div>
-
-            }
-        </div>
+        <PageWrapper>
+            <div>
+                Dashboard
+                {!userData ?
+                    <PokeballLoading /> :
+                    <div>
+                        <UserRecord userData={userData} />
+                        {/* Pokemon Parties */}
+                        <Pokedex />
+                        <BattleArena />
+                    </div>
+                }
+            </div>
+        </PageWrapper>
     );
 }
 

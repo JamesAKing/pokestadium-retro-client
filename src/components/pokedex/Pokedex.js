@@ -42,10 +42,12 @@ function Pokedex() {
 
     return (
         <section>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <h3>Search Bar:</h3> 
-                    <input autoComplete="off" type="text" name="query" value={searchQuery} onChange={handleChange} />
+            <form role="search" onSubmit={handleSubmit}>
+                <label htmlFor="query">
+                    <div>
+                        <img  src={null} alt="search pokedex" />
+                    </div> 
+                    <input autoComplete="off" type="text" placeholder="Type to search..." name="query" value={searchQuery} onChange={handleChange} />
                 </label>
                 <div>
                     <button type="submit">Search</button>

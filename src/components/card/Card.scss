@@ -1,12 +1,21 @@
 @use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 .card {
     width: 100%;
     min-height: 200px;
     padding: 1.5rem 1rem;
-    margin: 1rem;
-    background: white;
+    margin-bottom: 1.5rem;
+    background-color: white;
     border: solid 2px $pokeball-base;
     border-radius: 0.5rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, .7);
+
+    @include tablet {
+        margin-bottom: 2rem;
+    }
+
+    @include desktop {
+        margin-bottom: 3rem;
+    }
 }

@@ -2,7 +2,7 @@
 @use "../../styles/mixins" as *;
 
 .user-record {
-    @include default-page-padding;
+    @include page-padding-default;
 
     &__card {
         width: 100%;

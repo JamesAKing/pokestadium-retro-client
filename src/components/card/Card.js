@@ -1,9 +1,9 @@
 import './Card.scss';
 
-function Card(props) {
+function Card({ className, children }) {
     return (
-        <div className="card">
-            {props.children}
+        <div className={`card${className ? ` ${className}` : ""}`} >
+            {children}
         </div>
     );
 }

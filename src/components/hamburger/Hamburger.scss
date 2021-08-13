@@ -55,7 +55,7 @@ $dot-diameter: 0.75rem;
     }
 
     &__nav-items {
-        @include default-page-padding;
+        @include page-padding-default;
         padding-top: 2rem;
         height: 100%;
         min-height: 300px;

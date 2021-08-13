@@ -1,13 +1,18 @@
 import React from 'react';
 import LoginForm from '../../components/form-login/LoginForm';
+import PageWrapper from '../../components/page-wrapper/PageWrapper';
+import Card from '../../components/card/Card';
 
 function LoginPage() {
 
     return (
-        <main>
+        <PageWrapper>
             LOGIN PAGE
-            <LoginForm />
-        </main>
+            <Card>
+                <LoginForm />
+            </Card>
+        </PageWrapper>
+
     );
     
 }
