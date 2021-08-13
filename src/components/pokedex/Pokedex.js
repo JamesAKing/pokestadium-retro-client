@@ -2,6 +2,7 @@ import'./Pokedex.scss';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { pokemonArr } from '../../assets/data/autocomplete';
+import PokedexEntry from '../pokedex-entry/PokedexEntry';
 
 const POKE_API_URL = 'https://pokeapi.co/api/v2';
 // const TYPE_API_URL = `${POKE_API_URL}/type`;
@@ -63,6 +64,9 @@ function Pokedex() {
                 )
             })
             }
+            <div className="pokedex__pokemon-info">
+                {pokemonData.id && <PokedexEntry pokemonData={pokemonData} />}
+            </div>
         </section>
     );
 

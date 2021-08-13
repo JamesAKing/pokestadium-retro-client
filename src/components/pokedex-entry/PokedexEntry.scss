@@ -1,0 +1,43 @@
+@use "../../styles/mixins" as *;
+
+.pokedex-entry {
+    overflow: hidden;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include tablet {
+            flex-direction: row;
+            gap: 2rem
+        }
+    }
+
+    &__icon {
+        width: 250px;
+    }
+
+    &__main-info {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        @include tablet {
+            justify-content: flex-start;
+        }
+    }
+
+    &__column {
+        width: 100%;
+
+        @include tablet {
+            max-width: 200px;
+        }
+    }
+}

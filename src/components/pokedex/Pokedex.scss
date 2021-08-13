@@ -1,1 +1,10 @@
 @use "../../styles/variables" as *;
+
+.pokedex {
+
+    &__pokemoninfo {
+        width: 100%;
+        height: 250px;
+
+    }
+}
