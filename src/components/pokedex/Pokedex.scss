@@ -2,9 +2,15 @@
 
 .pokedex {
 
-    &__pokemoninfo {
-        width: 100%;
-        height: 250px;
+    &__pokemon-info {
+        transition: 1s;
 
+        &--inactive {
+            width: 100%;
+            height: 50px;
+        }
+
+        &--active {
+        }
     }
 }
