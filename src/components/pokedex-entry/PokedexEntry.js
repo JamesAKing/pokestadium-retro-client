@@ -5,10 +5,10 @@ function PokedexEntry({ pokemonData }) {
     const { name, id, sprites, abilities, weight, height, types } = pokemonData
 
     return (
-        <div>
+        <div className="pokedex-entry">
             <header className="pokedex-entry__header">
-                <h3>{name}</h3>
                 <h4># {id}</h4>
+                <h3>{name}</h3>
             </header>   
             <div className="pokedex-entry__content">
                 <img className="pokedex-entry__icon" src={sprites.front_default} alt={name} />

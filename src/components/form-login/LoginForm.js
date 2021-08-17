@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { loginURL } from '../../utilities/apiURLs';
 import { useAuth } from '../../contexts/AuthContext';
 import LoggedInRedirect from '../logged-in-redirect/LoggedInRedirect';

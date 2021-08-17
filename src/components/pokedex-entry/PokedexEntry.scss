@@ -1,11 +1,12 @@
 @use "../../styles/mixins" as *;
 
 .pokedex-entry {
-    overflow: hidden;
+    animation: 1s;
 
     &__header {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
     }
 
     &__content {

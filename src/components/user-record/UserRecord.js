@@ -39,7 +39,7 @@ function UserRecord({ userData }) {
                             <p>Last Name: {player.lastName}</p>
                         </div>
                         <div>
-                            <img src="#" alt="profile image" />
+                            <img src="#" alt={`${username}'s profile icon`} />
                         </div>
                     </div>
                     <div>

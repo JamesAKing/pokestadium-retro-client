@@ -12,9 +12,8 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const [ user, setUser ] = useState();
-    console.log(user);
 
-    // Functions determing how client handles auth and state
+    // Functions determine how client handles auth and state
     // const registerUser = () => {};
 
     const loginUser = async (loginURL, loginData) => {

@@ -65,7 +65,7 @@ function Pokedex() {
                 )
             })
             }
-            <div className={`pokedex__pokemon-info ${pokemonData.id ? "pokedex__pokemon-info--active" : "pokedex__pokemon-info--inactive"}`}>
+            <div className={`pokedex__pokemon-info`}>
                 {pokemonData.id && <PokedexEntry pokemonData={pokemonData} />}
             </div>
         </section>

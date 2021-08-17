@@ -3,14 +3,21 @@
 .pokedex {
 
     &__pokemon-info {
-        transition: 1s;
 
-        &--inactive {
-            width: 100%;
-            height: 50px;
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-        &--active {
-        }
+        // transition: height 1s;
+
+        // &--inactive {
+        //     width: 100%;
+        //     height: 50px;
+        // }
+
+        // &--active {
+        //     height: auto;
+        // }
     }
 }
