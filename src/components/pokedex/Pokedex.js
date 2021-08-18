@@ -55,15 +55,30 @@ function Pokedex() {
                     <div className="search-bar__icon-container">
                         <img className="search-bar__icon" src={SearchIcon} alt="search pokedex" />
                     </div>
-                        <label></label>
-                        <input className="search-bar__input" type="text" placeholder="search pokedex..." />
+                    <label htmlFor="query"></label>
+                    <input className="search-bar__input" type="text" autoComplete="off" name="query" value={searchQuery} placeholder="search pokedex..." onChange={handleChange}/>
+                    <ul className="search-bar__autocomplete">
+                        {autocomplete.map((pokemon, i) => {
+                            return (
+                                <li 
+                                    className="search-bar__items" 
+                                    key={i} 
+                                    onClick={() => {
+                                        setSearchQuery(pokemon);
+                                        setAutocomplete([]);
+                                    }}>
+                                        {pokemon}
+                                </li>
+                            )
+                        })}
+                    </ul>
                 </div>
                 <div>
                     <button type="submit">Search</button>
                     <button type="button" onClick={resetSearch}>Clear</button>
                 </div>
             </form>
-            {autocomplete && autocomplete.length !== 0 && 
+            {/* {autocomplete && autocomplete.length !== 0 && 
             autocomplete.map((result, i) => {
                 return (
                     <p key={i} onClick={() => {
@@ -72,7 +87,7 @@ function Pokedex() {
                     }}>{result}</p>
                 )
             })
-            }
+            } */}
             <div className={`pokedex__pokemon-info`}>
                 {pokemonData.id && <PokedexEntry pokemonData={pokemonData} />}
             </div>
