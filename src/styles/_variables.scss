@@ -14,8 +14,6 @@ $pokemon-logo-shadow: #c7a008;
 $pokemon-logo-border: #2a75bb;
 $pokemon-logo-border-shadow: #3c5aa6;
 
-
-
 // Default Content Spacing
 $padding-default-mobile: 1rem;
 $padding-default-tablet: 1.5rem;
@@ -24,3 +22,10 @@ $padding-default-desktop: 6.25rem;
 // Header Height
 $header-height: 80px;
 $header-spacer-height: calc(#{$header-height} + 30px);
+
+// Borders
+$border-radius-default: 20px;
+
+// Shadows
+$shadow-default: 0 0 4px rgba(0, 0, 0, .7);
+$shadow-highlight: 0 0 4px $pokeball-top;

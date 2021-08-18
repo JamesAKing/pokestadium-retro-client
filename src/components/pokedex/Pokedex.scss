@@ -1,4 +1,6 @@
 @use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
 
 .pokedex {
 
@@ -19,5 +21,48 @@
         // &--active {
         //     height: auto;
         // }
+    }
+}
+
+.search-bar {
+    width: 100%;
+    height: 48px;
+    margin: 2rem 0;
+    border: 2px solid $pokeball-trim;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    
+    @include tablet {
+        max-width: 400px;
+        border-radius: 5px 20px 20px 5px;
+    }
+
+    &__icon-container {
+        display: none;
+
+        @include tablet {
+            width: 48px;
+            height: inherit;
+            background-color: $pokeball-trim;
+            border-right: 2px solid $pokeball-trim;
+            border-radius: 5px 0 0 5px;
+            display: grid;
+            place-items: center;
+        }
+    }
+
+    &__icon {
+        width: inherit;
+        max-height: inherit;
+    }
+
+    &__input {
+        width: 100%;
+        height: inherit;
+        padding: 0 1rem;
+        background-color: transparent;
+        border: none;
+        outline: none;
     }
 }

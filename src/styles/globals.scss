@@ -23,3 +23,22 @@
         }
     }
 }
+
+.input {
+    width: 100%;
+    height: 40px;
+    padding: 0 1rem;
+    
+    border: 2px solid $pokeball-base;
+    border-radius: $border-radius-default;
+    box-shadow: $shadow-default;
+
+    @include tablet {
+        max-width: 300px;
+    }
+
+    &:focus, &:active {
+        outline: none;
+        box-shadow: $shadow-highlight;
+    }
+}

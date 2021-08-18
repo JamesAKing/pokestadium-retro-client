@@ -4,6 +4,7 @@ import axios from 'axios';
 import { pokemonArr } from '../../assets/data/autocomplete';
 import PokedexEntry from '../pokedex-entry/PokedexEntry';
 import { filterArr } from '../../utilities/functions';
+import SearchIcon from '../../assets/icons/search.svg';
 
 const POKE_API_URL = 'https://pokeapi.co/api/v2';
 // const TYPE_API_URL = `${POKE_API_URL}/type`;
@@ -26,7 +27,7 @@ function Pokedex() {
         };
     };
 
-    const resetSeach = () => {
+    const resetSearch = () => {
         setSearchQuery('');
         setPokemonData({});
     };
@@ -37,22 +38,29 @@ function Pokedex() {
         
         if (!query) return setAutocomplete([]);
 
-        const filteredautocomplete = filterArr(pokemonArr, query);
-        setAutocomplete(filteredautocomplete);
+        const filteredPokemonArr = filterArr(pokemonArr, query);
+        setAutocomplete(filteredPokemonArr);
     };
     
     return (
         <section>
             <form role="search" onSubmit={handleSubmit}>
-                <label htmlFor="query">
+                {/* <label htmlFor="query">
                     <div>
                         <img  src={null} alt="search pokedex" />
                     </div> 
-                    <input autoComplete="off" type="text" placeholder="Type to search..." name="query" value={searchQuery} onChange={handleChange} />
-                </label>
+                    <input className="input" autoComplete="off" type="text" placeholder="Type to search..." name="query" value={searchQuery} onChange={handleChange} />
+                </label> */}
+                <div className="search-bar">
+                    <div className="search-bar__icon-container">
+                        <img className="search-bar__icon" src={SearchIcon} alt="search pokedex" />
+                    </div>
+                        <label></label>
+                        <input className="search-bar__input" type="text" placeholder="search pokedex..." />
+                </div>
                 <div>
                     <button type="submit">Search</button>
-                    <button type="button" onClick={resetSeach}>Clear</button>
+                    <button type="button" onClick={resetSearch}>Clear</button>
                 </div>
             </form>
             {autocomplete && autocomplete.length !== 0 && 
