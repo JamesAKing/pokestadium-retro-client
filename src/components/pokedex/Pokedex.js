@@ -1,6 +1,7 @@
 import'./Pokedex.scss';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useAuth } from '../../contexts/AuthContext';
 import { pokemonArr } from '../../assets/data/autocomplete';
 import PokedexEntry from '../pokedex-entry/PokedexEntry';
 import { filterArr } from '../../utilities/functions';
@@ -11,9 +12,15 @@ const POKE_API_URL = 'https://pokeapi.co/api/v2';
 const POKEMON_API_URL = `${POKE_API_URL}/pokemon`;
 
 function Pokedex() {
+
+    const { user } = useAuth();
+
     const [ autocomplete, setAutocomplete ] = useState([]);
     const [ searchQuery, setSearchQuery ] = useState('');
     const [ pokemonData, setPokemonData ] = useState({});
+
+    // Create as a hook?
+    const [ newParty, setNewParty ] = useState([]);
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -41,16 +48,14 @@ function Pokedex() {
         const filteredPokemonArr = filterArr(pokemonArr, query);
         setAutocomplete(filteredPokemonArr);
     };
+    const addToParty = () => {
+        const updatedParty = newParty.push(pokemonData.id)
+        setNewParty(updatedParty);
+    };
     
     return (
         <section>
             <form role="search" onSubmit={handleSubmit}>
-                {/* <label htmlFor="query">
-                    <div>
-                        <img  src={null} alt="search pokedex" />
-                    </div> 
-                    <input className="input" autoComplete="off" type="text" placeholder="Type to search..." name="query" value={searchQuery} onChange={handleChange} />
-                </label> */}
                 <div className="search-bar">
                     <div className="search-bar__icon-container">
                         <img className="search-bar__icon" src={SearchIcon} alt="search pokedex" />
@@ -76,18 +81,12 @@ function Pokedex() {
                 <div>
                     <button type="submit">Search</button>
                     <button type="button" onClick={resetSearch}>Clear</button>
+                    {user && 
+                        <button type="button" onClick={addToParty}>Add to Party</button>
+
+                    }
                 </div>
             </form>
-            {/* {autocomplete && autocomplete.length !== 0 && 
-            autocomplete.map((result, i) => {
-                return (
-                    <p key={i} onClick={() => {
-                        setSearchQuery(result);
-                        setAutocomplete([]);
-                    }}>{result}</p>
-                )
-            })
-            } */}
             <div className={`pokedex__pokemon-info`}>
                 {pokemonData.id && <PokedexEntry pokemonData={pokemonData} />}
             </div>

@@ -68,20 +68,18 @@
 
     &__autocomplete {
         position: absolute;
-        top: 100%;
-        left: 47px;
-        right: 20px;
+        top: 40px;
+        left: -2px;
+        right: -2.5px;
         border: 2px solid $pokeball-trim;
         border-top: none;
         animation: height 0.3s;
+        z-index: 1;
 
-        &--inactive {
-            height: 0;
-            display: none;
-        }
-
-        &--active {
-            height: auto;
+        @include tablet {
+            top: 44px;
+            left: 47px;
+            right: 20px;
         }
     }
 
