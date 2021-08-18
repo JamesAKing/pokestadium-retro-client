@@ -62,21 +62,23 @@ function Pokedex() {
                     </div>
                     <label htmlFor="query"></label>
                     <input className="search-bar__input" type="text" autoComplete="off" name="query" value={searchQuery} placeholder="search pokedex..." onChange={handleChange}/>
-                    <ul className="search-bar__autocomplete">
-                        {autocomplete.map((pokemon, i) => {
-                            return (
-                                <li 
-                                    className="search-bar__items" 
-                                    key={i} 
-                                    onClick={() => {
-                                        setSearchQuery(pokemon);
-                                        setAutocomplete([]);
-                                    }}>
-                                        {pokemon}
-                                </li>
-                            )
-                        })}
-                    </ul>
+                    {autocomplete.length !== 0 &&
+                        <ul className="search-bar__autocomplete">
+                            {autocomplete.map((pokemon, i) => {
+                                return (
+                                    <li 
+                                        className="search-bar__items" 
+                                        key={i} 
+                                        onClick={() => {
+                                            setSearchQuery(pokemon);
+                                            setAutocomplete([]);
+                                        }}>
+                                            {pokemon}
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    }
                 </div>
                 <div>
                     <button type="submit">Search</button>

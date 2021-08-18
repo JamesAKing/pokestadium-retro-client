@@ -7,7 +7,7 @@ import PageWrapper from '../../components/page-wrapper/PageWrapper';
 function HomePage() {
     return (
         <PageWrapper>
-            <div className="home__content">
+            <div className="home">
                 <h1 className="heading__main">PokeStadium</h1>
                 <Card>
                     <p>Welcome to my site</p>
